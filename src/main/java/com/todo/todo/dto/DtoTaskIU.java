@@ -1,6 +1,7 @@
 package com.todo.todo.dto;
 
 import com.todo.todo.entity.User;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,21 +10,22 @@ import java.time.LocalDate;
 
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class DtoTask {
-    private Long id;
+@NoArgsConstructor
+public class DtoTaskIU {
 
+    @NotEmpty(message = "Task basşlığı boş bırakılamaz!")
     private String taskTitle;
 
+    @NotEmpty(message = "Task açıklaması boş bırakılamaz!")
     private String description;
 
-    //son tarihi
+    //sontarihi
+    @NotEmpty(message = "Son tarih kısmı boş bırakılamaz!")
     private LocalDate dueDate;
 
-    //bitti bitmediyi enumla da yapabiliriz bunabir bak
-    //private boolean isComplete;
-
     //status olacak bi de bitti bitmedi iptal gibisinden
+
+    private User user;
 
 }

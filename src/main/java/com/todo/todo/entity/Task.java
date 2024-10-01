@@ -28,11 +28,6 @@ public class Task {
 
     //status olacak bi de bitti bitmedi iptal gibisinden
 
-    //düüşün ama onetomany olması lazım
-    private Long projectId;
-
-    //onetoone olacak bu
-    private Long userId;
 
 
 }

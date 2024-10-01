@@ -1,11 +1,14 @@
 package com.todo.todo.dto;
 
+import com.todo.todo.entity.Task;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,5 +27,7 @@ public class DtoUserIU {
     private String email;
 
     private LocalDate birthDate;
+
+    private List<Task> userTasks=new ArrayList<>();
 
 }

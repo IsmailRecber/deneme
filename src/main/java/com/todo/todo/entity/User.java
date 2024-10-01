@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,15 +18,25 @@ import java.time.LocalDate;
 public class User {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_name")
     private String userName;
 
+
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
+
+    @OneToMany
+    //(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> userTasks;
 }
