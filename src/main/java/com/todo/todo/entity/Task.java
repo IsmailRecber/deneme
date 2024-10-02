@@ -26,8 +26,7 @@ public class Task {
     //son tarihi
     private LocalDate dueDate;
 
+    private Long userId;
     //status olacak bi de bitti bitmedi iptal gibisinden
-
-
 
 }

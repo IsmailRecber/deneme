@@ -1,5 +1,6 @@
 package com.todo.todo.service;
 
+import com.todo.todo.dto.DtoTask;
 import com.todo.todo.dto.DtoUser;
 import com.todo.todo.dto.DtoUserIU;
 
@@ -17,4 +18,5 @@ public interface IUserService {
 
     public DtoUser updateUser(Long id,DtoUserIU dtoUserIU);
 
+    public <T> void addTaskToUser(Long id, T taskOrTaskList);
 }

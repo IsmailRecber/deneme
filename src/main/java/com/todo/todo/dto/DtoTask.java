@@ -21,6 +21,9 @@ public class DtoTask {
     //son tarihi
     private LocalDate dueDate;
 
+
+    private Long userId;
+
     //bitti bitmediyi enumla da yapabiliriz bunabir bak
     //private boolean isComplete;
 

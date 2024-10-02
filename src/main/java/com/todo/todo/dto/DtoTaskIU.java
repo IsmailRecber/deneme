@@ -26,6 +26,4 @@ public class DtoTaskIU {
 
     //status olacak bi de bitti bitmedi iptal gibisinden
 
-    private User user;
-
 }

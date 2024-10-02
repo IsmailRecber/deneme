@@ -2,6 +2,7 @@ package com.todo.todo.controller.impl;
 
 import com.todo.todo.controller.ITaskController;
 import com.todo.todo.dto.DtoTask;
+import com.todo.todo.dto.DtoTaskIU;
 import com.todo.todo.entity.Task;
 import com.todo.todo.service.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,13 @@ public class TaskControllerImpl implements ITaskController {
 
     @PostMapping(path = "/save")
     @Override
-    public DtoTask saveTask() {
-        return taskService.saveTask();
+    public DtoTask saveTask(DtoTaskIU dtoTask) {
+        return taskService.saveTask(dtoTask);
     }
 
     @GetMapping(path = "/list")
     @Override
-    public List<Task> getAllTasks() {
+    public List<DtoTask> getAllTasks() {
         return taskService.getAllTasks();
     }
 

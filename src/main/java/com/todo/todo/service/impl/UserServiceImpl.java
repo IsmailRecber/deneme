@@ -43,6 +43,7 @@ public class UserServiceImpl implements IUserService {
             dbUser.setEmail(dtoUserIU.getEmail());
             dbUser.setPassword(dtoUserIU.getPassword());
             dbUser.setBirthDate(dtoUserIU.getBirthDate());
+            List<Task> dtoTasks=optional.get().getUserTasks();
 
             User updatedUser=userRepository.save(dbUser);
             BeanUtils.copyProperties(updatedUser,dto);
@@ -81,9 +82,19 @@ public class UserServiceImpl implements IUserService {
     public List<DtoUser> getAllUsers() {
         List<DtoUser> dtoList=new ArrayList<>();
         List<User> userList=userRepository.findAll();
+
         for (User user:userList){
             DtoUser dto=new DtoUser();
             BeanUtils.copyProperties(user,dto);
+
+            List<DtoTask> dtoTaskList=new ArrayList<>();
+            for (Task task:user.getUserTasks()){
+                DtoTask dtoTask=new DtoTask();
+                BeanUtils.copyProperties(task,dtoTask);
+                dtoTaskList.add(dtoTask);
+            }
+
+            dto.setUserTasks(dtoTaskList);
             dtoList.add(dto);
         }
         return dtoList;
@@ -97,5 +108,30 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    @Override
+    public <T> void addTaskToUser(Long id, T taskOrTaskList) {
+        Optional<User> optional=userRepository.findById(id);
+        if (optional.isPresent()){
+            User dbUser=optional.get();
+            if (taskOrTaskList instanceof Task){
+                Task task=(Task) taskOrTaskList;
+                dbUser.getUserTasks().add(task);
+            }
 
+            if (taskOrTaskList instanceof List<?>){
+                List<?> taskList=(List<?>) taskOrTaskList;
+
+                for (Object obj:taskList){
+                    if (obj instanceof Task){
+                        Task task=(Task) obj;
+                        dbUser.getUserTasks().add(task);
+                    }
+                }
+
+            }
+
+
+        }
+
+    }
 }
