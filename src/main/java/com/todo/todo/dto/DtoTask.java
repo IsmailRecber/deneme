@@ -22,7 +22,7 @@ public class DtoTask {
     private LocalDate dueDate;
 
 
-    private Long userId;
+    private User user;
 
     //bitti bitmediyi enumla da yapabiliriz bunabir bak
     //private boolean isComplete;

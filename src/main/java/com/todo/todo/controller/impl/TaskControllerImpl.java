@@ -19,7 +19,7 @@ public class TaskControllerImpl implements ITaskController {
 
     @PostMapping(path = "/save")
     @Override
-    public DtoTask saveTask(DtoTaskIU dtoTask) {
+    public DtoTask saveTask(@RequestBody DtoTaskIU dtoTask) {
         return taskService.saveTask(dtoTask);
     }
 

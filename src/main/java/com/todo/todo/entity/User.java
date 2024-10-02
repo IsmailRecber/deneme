@@ -36,7 +36,6 @@ public class User {
     private LocalDate birthDate;
 
 
-    @OneToMany
-    //(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> userTasks;
 }

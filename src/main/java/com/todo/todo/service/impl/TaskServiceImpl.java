@@ -22,15 +22,18 @@ public class TaskServiceImpl implements ITaskService {
 
     @Autowired
     private TaskRepository taskRepository;
-
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public DtoTask saveTask(DtoTaskIU dtoTask) {
         Task task=new Task();
+
         DtoTask response=new DtoTask();
         BeanUtils.copyProperties(dtoTask,task);
         Task dbTask=taskRepository.save(task);
         BeanUtils.copyProperties(dbTask,response);
+
 
         return response;
     }

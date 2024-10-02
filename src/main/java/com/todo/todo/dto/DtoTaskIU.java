@@ -23,6 +23,7 @@ public class DtoTaskIU {
     //sontarihi
     @NotEmpty(message = "Son tarih kısmı boş bırakılamaz!")
     private LocalDate dueDate;
+    private User user;
 
     //status olacak bi de bitti bitmedi iptal gibisinden
 

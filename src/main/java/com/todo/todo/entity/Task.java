@@ -26,7 +26,9 @@ public class Task {
     //son tarihi
     private LocalDate dueDate;
 
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user=new User();
     //status olacak bi de bitti bitmedi iptal gibisinden
 
 }
