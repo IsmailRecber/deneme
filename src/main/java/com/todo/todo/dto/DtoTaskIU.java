@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
 
@@ -23,8 +24,9 @@ public class DtoTaskIU {
     //sontarihi
     @NotEmpty(message = "Son tarih kısmı boş bırakılamaz!")
     private LocalDate dueDate;
-    private User user;
 
+    @NotEmpty(message = "User Id boş bırakılamaz")
+    private Long userId;
     //status olacak bi de bitti bitmedi iptal gibisinden
 
 }

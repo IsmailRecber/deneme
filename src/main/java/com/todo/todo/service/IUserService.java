@@ -18,5 +18,5 @@ public interface IUserService {
 
     public DtoUser updateUser(Long id,DtoUserIU dtoUserIU);
 
-    public <T> void addTaskToUser(Long id, T taskOrTaskList);
+    public void addTaskToUser(Long id,DtoTask dtoTask);
 }

@@ -109,29 +109,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public <T> void addTaskToUser(Long id, T taskOrTaskList) {
+    public  void addTaskToUser(Long id,DtoTask dtoTask) {
         Optional<User> optional=userRepository.findById(id);
-        if (optional.isPresent()){
-            User dbUser=optional.get();
-            if (taskOrTaskList instanceof Task){
-                Task task=(Task) taskOrTaskList;
-                dbUser.getUserTasks().add(task);
-            }
-
-            if (taskOrTaskList instanceof List<?>){
-                List<?> taskList=(List<?>) taskOrTaskList;
-
-                for (Object obj:taskList){
-                    if (obj instanceof Task){
-                        Task task=(Task) obj;
-                        dbUser.getUserTasks().add(task);
-                    }
-                }
-
-            }
-
-
-        }
+        User user=new User();
+        Task task=new Task();
+        BeanUtils.copyProperties(optional,user);
+        BeanUtils.copyProperties(dtoTask,task);
+        user.getUserTasks().add(task);
 
     }
 }

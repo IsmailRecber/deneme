@@ -11,6 +11,7 @@ import com.todo.todo.service.ITaskService;
 import com.todo.todo.service.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,16 +25,20 @@ public class TaskServiceImpl implements ITaskService {
     private TaskRepository taskRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private IUserService userService;
 
     @Override
     public DtoTask saveTask(DtoTaskIU dtoTask) {
+        Long userId=dtoTask.getUserId();
         Task task=new Task();
 
         DtoTask response=new DtoTask();
         BeanUtils.copyProperties(dtoTask,task);
+
         Task dbTask=taskRepository.save(task);
         BeanUtils.copyProperties(dbTask,response);
-
+        userService.addTaskToUser(userId,response);
 
         return response;
     }

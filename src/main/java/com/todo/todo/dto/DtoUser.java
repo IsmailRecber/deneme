@@ -25,5 +25,5 @@ public class DtoUser {
 
     private LocalDate birthDate;
 
-    private List<DtoTask> userTasks=new ArrayList<>();
+    private List<DtoTask> userTasks;
 }
